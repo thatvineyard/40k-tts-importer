@@ -91,7 +91,7 @@ def format_ability(ability_selection):
   if ability_selection["name"] in abilities_to_include_description: 
     result += f" {ability_selection["characteristics"][0]["$text"]}"
     
-  return f"{result}"
+  return f"[u]{result}[/u]"
 
 def print_model_wargear(model):
   upgrades = split_objects_by_key_value(model["selections"], "type", ["upgrade"])["upgrade"]
@@ -109,7 +109,7 @@ def print_statline(unit):
   model_profiles = split_objects_by_value(unit["profiles"], lambda x: x["typeName"], ["Unit", "Abilities"])
   unit, model_abilities = model_profiles["Unit"], model_profiles["Abilities"] 
   
-  print(f"{"\n".join(map(lambda x: format_statline(x), unit))}", end="\\n")
+  print(f"{"\\n".join(map(lambda x: format_statline(x), unit))}", end="\\n")
   for ability in map(format_ability, model_abilities):
     print(f"⁂ {ability}", end="\\n")
   
@@ -126,7 +126,7 @@ def print_unit(unit):
     print_model_categories(unit)
 
 def print_model(model):
-  print(f"--- {model["name"]} ---", end="\\n")
+  print(f"--- {model["name"]} ---")
   print_statline(model)
   print_model_wargear(model)
   print_model_categories(model)
@@ -150,5 +150,7 @@ print("Units:", len(units))
 all_units = {obj['name']: obj for obj in units + models if 'name' in obj}
 answers = inquirer.prompt([inquirer.List("unit", "Which unit do you want to see?", all_units)])
 
+if not answers:
+  exit(1) 
 
 print_stats(all_units[answers["unit"]])
