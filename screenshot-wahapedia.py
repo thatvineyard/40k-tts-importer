@@ -7,7 +7,7 @@ from PIL import Image
 
 from datasheets import ADMECH_DATASHEETS, ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN, NECRON_DATASHEETS_BLACKSTONE_CAMPAIGN
 from dommanipulation import *
-from wahapedia import ADMECH_DETACHMENTS, Datasheet, generate_url
+from wahapedia import ADMECH_DETACHMENTS, FACTIONS, Datasheet, generate_url
 
 SCREENSHOT_DIRECTORY = "datasheets"
 BLACKSTONE_SCREENSHOT_DIRECTORY = f"{SCREENSHOT_DIRECTORY}/blackstone"
@@ -49,9 +49,15 @@ def screenshot_datasheet(
         pass
 
     # select detatchment
-    detachment = ADMECH_DETACHMENTS.EXPLORATOR_MANIPLE
-    detachment_selector = Select(driver.find_element(By.CLASS_NAME, "FilterSelectAM"))
-    detachment_selector.select_by_index(detachment.value)
+    if datasheet.faction == FACTIONS.ADMECH:
+        detachment = ADMECH_DETACHMENTS.EXPLORATOR_MANIPLE.value
+        detachment_selector = Select(driver.find_element(By.CLASS_NAME, "FilterSelectAM"))
+
+    if datasheet.faction == FACTIONS.NECRON:
+        detachment = 1
+        detachment_selector = Select(driver.find_element(By.CLASS_NAME, "FilterSelectNE"))
+
+    detachment_selector.select_by_index(detachment)
 
     remove_dom_element_by_class(["ShowDatasheetFeatures"], driver)
     remove_dom_element_by_class(["dsIconsWide"], driver)
