@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from PIL import Image
 
-from datasheets import ADMECH_DATASHEETS, ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN
+from datasheets import ADMECH_DATASHEETS, ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN, NECRON_DATASHEETS_BLACKSTONE_CAMPAIGN
 from dommanipulation import *
 from wahapedia import ADMECH_DETACHMENTS, Datasheet, generate_url
 
@@ -87,6 +87,9 @@ def screenshot_datasheet(
 
     screenshot_element(element, f"{screenshot_directory}/{filename}.png", driver)
 
+def screenshot_stratagem(screenshot_directory: str, driver: WebDriver):
+    pass
+
 
 driver = webdriver.Chrome()
 
@@ -95,8 +98,14 @@ if not os.path.exists(SCREENSHOT_DIRECTORY):
 if not os.path.exists(BLACKSTONE_SCREENSHOT_DIRECTORY):
     os.makedirs(BLACKSTONE_SCREENSHOT_DIRECTORY)
 
-for datasheet in ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN:
-    screenshot_datasheet(datasheet, BLACKSTONE_SCREENSHOT_DIRECTORY, driver)
+# for detatchment in ADMECH_DETACHMENTS:
+#     print(detatchment)
 
-for datasheet in ADMECH_DATASHEETS:
-    screenshot_datasheet(datasheet, SCREENSHOT_DIRECTORY, driver)
+# for datasheet in ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN:
+#     screenshot_datasheet(datasheet, BLACKSTONE_SCREENSHOT_DIRECTORY, driver)
+
+# for datasheet in ADMECH_DATASHEETS:
+#     screenshot_datasheet(datasheet, SCREENSHOT_DIRECTORY, driver)
+
+for datasheet in NECRON_DATASHEETS_BLACKSTONE_CAMPAIGN:
+    screenshot_datasheet(datasheet, BLACKSTONE_SCREENSHOT_DIRECTORY, driver)

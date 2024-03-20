@@ -151,3 +151,44 @@ ADMECH_DATASHEETS: list[Datasheet] = [
         "Sydonian-Dragoons-With-Taser-Lances",
     ),
 ]
+
+NECRON_DATASHEETS_BLACKSTONE_CAMPAIGN = [
+    Datasheet(
+        FACTIONS.NECRON,
+        "Overlord with Translocation Shroud",
+        "Overlord-with-translocation-shroud",
+    ),
+    Datasheet(
+        FACTIONS.NECRON,
+        "Plasmancer",
+        "Plasmancer",
+    ),
+    Datasheet(
+        FACTIONS.NECRON,
+        "Immortals",
+        "Immortals",
+        weapon_amounts={
+            "Gauss blaster": 1,
+            "Tesla carbine": 0,
+        }
+    ),
+    Datasheet(
+        FACTIONS.NECRON,
+        "Necron Warriors",
+        "Necron-Warriors",
+        weapon_amounts={
+            "Gauss flayer": 1,
+            "Gauss reaper": 0,
+        }
+    ),
+    Datasheet(
+        FACTIONS.NECRON,
+        "Flayed Ones",
+        "Flayed-Ones",
+    ),
+    Datasheet(
+        FACTIONS.NECRON,
+        "Canoptek Scarab Swarms",
+        "Canoptek-Scarab-Swarms",
+    )
+]
