@@ -1,4 +1,8 @@
+from typing import Tuple
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 
@@ -27,6 +31,13 @@ def change_element_width_by_ids(ids: list[str], width: int, driver: WebDriver):
             f"document.getElementById('{id}').style.width = '{width}px';"
         )
 
+# def set_element_style(classname: str, style: str):
+#     js_script = f"""
+#     let elements = Array.from(document.querySelectorAll(".{classname}"));
+#     elements.forEach(cls => cls
+#     """
+
+#     driver.execute_script(js_script)
 
 def remove_dom_header_element_and_following_elements(
     header_content: str, driver: WebDriver
@@ -107,9 +118,6 @@ def add_amounts_to_weapon(weapon_amounts: dict[str, int], driver: WebDriver):
             weapon_row,
         )
 
-        if not is_parent_first_sibling:
-            continue
-
         # For each table, find all span elements within
         span = weapon_row.find_element(By.TAG_NAME, "span")
 
@@ -123,6 +131,8 @@ def add_amounts_to_weapon(weapon_amounts: dict[str, int], driver: WebDriver):
                         "arguments[0].parentElement.remove()", weapon_row
                     )
                 else:
+                    if not is_parent_first_sibling:
+                        continue
                     driver.execute_script(
                         "arguments[0].previousElementSibling.innerHTML = arguments[1];",
                         weapon_row,
@@ -188,3 +198,31 @@ def set_nickname(nickname: str, driver: WebDriver):
     """
 
     driver.execute_script(js_script, div_to_copy, nickname)
+
+
+def scroll_element_into_view(element: WebElement, driver: WebDriver):
+    js_script = "arguments[0].scrollIntoView()"
+
+    driver.execute_script(js_script, element)
+
+
+
+def wait_and_remove_element(locator: Tuple[str, str], driver: WebDriver, timeout: int = 30):
+    """
+    Waits for an element to be present in the DOM by its ID and then removes it.
+
+    Parameters:
+    - driver: The Selenium WebDriver instance.
+    - element_id: The ID of the element to wait for and remove.
+    - timeout: The maximum time to wait for the element to appear. Default is 30 seconds.
+    """
+    try:
+        # Wait until the element is present
+        element = WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located(locator)
+        )
+        
+        # Execute JavaScript to remove the element
+        driver.execute_script("arguments[0].parentNode.removeChild(arguments[0]);", element)
+    except Exception:
+        print(f"Timed out waiting for element '{locator[1]}' to appear.")

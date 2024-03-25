@@ -28,6 +28,9 @@ class Datasheet:
         path: str,
         nickname: str = "",
         notes: str = "",
+        enhancements: dict[str: str] = {},
+        battle_traits: dict[str: str] = {},
+        relics: dict[str: str] = {},
         weapon_amounts: dict[str, int] = {},
         wargear_amounts: dict[str, int] = {},
     ) -> None:
@@ -36,6 +39,9 @@ class Datasheet:
         self.path = path
         self.nickname = nickname
         self.notes = notes
+        self.enhancements = enhancements
+        self.battle_traits = battle_traits
+        self.relics = relics
         self.weapon_amounts = weapon_amounts
         self.wargear_amounts = wargear_amounts
 

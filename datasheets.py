@@ -8,6 +8,12 @@ ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN: list[Datasheet] = [
         "Tech-priest-Manipulus",
         nickname="The Custodian",
         notes='Leading Conservatives\\n - Unit gives -1 OC 3\\" aura, 1CP regain on 5+',
+        enhancements={
+            "Artisan": "When in aquisition objective: change hit, wound or saving throw to unmodified 6"
+        },
+        battle_traits={
+            "Teleportation node": "If not in eng range, blip out at end of movement, then deepstrike next"
+        },
         weapon_amounts={
             "Magnarail lance": 1,
             "Transonic cannon": 0,
@@ -15,11 +21,51 @@ ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN: list[Datasheet] = [
     ),
     Datasheet(
         FACTIONS.ADMECH,
+        "Skitarii Vanguard",
+        "Skitarii-Vanguard",
+        nickname="Conservators",
+        notes="Bodyguarding The Custodian\\n - Leader gives lethal hits, change one dice roll, blip",
+        weapon_amounts={
+            "Mechanicus pistol": 1,
+            "Arc rifle": 1,
+            "Radium carbine": 6,
+            "Plasma caliver": 1,
+            "Transuranic arquebus": 1,
+            "Alpha combat weapon": 1,
+            "Close combat weapon": 9,
+        },
+        wargear_amounts={
+            "Enhanced data-tether": 1,
+            "Omnispex": 0,
+        },
+    ),
+    Datasheet(
+        FACTIONS.ADMECH,
         "Technoarcheologist",
         "Technoarcheologist",
-        nickname="Archibaldus",
-        notes="Leading Royal Guard\\nArtisan (When in aquisition objective: change hit, wound or saving throw to unmodified 6)",
+        nickname="Archibaldus II",
+        notes="Leading Royal Guard\\n",
         weapon_amounts={"Mechanicus pistol": 1, "Servo-arc claw": 1},
+    ),
+    Datasheet(
+        FACTIONS.ADMECH,
+        "Skitarii Vanguard",
+        "Skitarii-Vanguard",
+        nickname="Royalists",
+        notes="Bodyguarding Archibaldus",
+        weapon_amounts={
+            "Mechanicus pistol": 1,
+            "Arc rifle": 1,
+            "Radium carbine": 6,
+            "Plasma caliver": 1,
+            "Transuranic arquebus": 1,
+            "Alpha combat weapon": 1,
+            "Close combat weapon": 9,
+        },
+        wargear_amounts={
+            "Enhanced data-tether": 1,
+            "Omnispex": 0,
+        },
     ),
     Datasheet(
         FACTIONS.ADMECH,
@@ -42,9 +88,47 @@ ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN: list[Datasheet] = [
     ),
     Datasheet(
         FACTIONS.ADMECH,
+        "Serberys Raiders",
+        "Serberys-Raiders",
+        nickname="Skitteriskits",
+        weapon_amounts={
+            "Mechanicus pistol": 1,
+            "Galvanic carbine": 6,
+            "Cavalry sabre": 6,
+        },
+        wargear_amounts={
+            "Enhanced data-tether": 1,            
+        }
+    ),
+    Datasheet(
+        FACTIONS.ADMECH,
+        "Sicarian Ruststalkers",
+        "Sicarian-Ruststalkers",
+        nickname="Absolute Mad Lads",
+        weapon_amounts={
+            "Transonic blades": 9,
+            "Transonic blades and chordclaw": 1,
+            "Transonic razor and chordclaw": 0,
+        },
+    ),
+    Datasheet(
+        FACTIONS.ADMECH,
+        "Kataphron Destroyers",
+        "Kataphron-Destroyers",
+        nickname="Pyrotoads",
+        weapon_amounts={
+            "Cognis flamer": 3,
+            "Phosphor blaster": 3,
+            "Heavy grav-cannon": 0,
+            "Kataphron plasma culverin": 0,
+            "Close combat weapon": 3,
+        },
+    ),
+    Datasheet(
+        FACTIONS.ADMECH,
         "Skitarii Vanguard",
         "Skitarii-Vanguard",
-        nickname="Conservatives",
+        nickname="Conservatives (Retired)",
         notes="Bodyguarding The Custodian\\n - Leader gives lethal hits",
         weapon_amounts={
             "Mechanicus pistol": 1,
@@ -62,9 +146,17 @@ ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN: list[Datasheet] = [
     ),
     Datasheet(
         FACTIONS.ADMECH,
+        "Technoarcheologist",
+        "Technoarcheologist",
+        nickname="Archibaldus (Retired)",
+        notes="Leading Royal Guard\\nArtisan (When in aquisition objective: change hit, wound or saving throw to unmodified 6)",
+        weapon_amounts={"Mechanicus pistol": 1, "Servo-arc claw": 1},
+    ),
+    Datasheet(
+        FACTIONS.ADMECH,
         "Skitarii Vanguard",
         "Skitarii-Vanguard",
-        nickname="Royal Guard",
+        nickname="Royal Guard (Retired)",
         notes="Bodyguarding Archibaldus",
         weapon_amounts={
             "Mechanicus pistol": 1,
@@ -78,31 +170,6 @@ ADMECH_DATASHEETS_BLACKSTONE_CAMPAIGN: list[Datasheet] = [
         wargear_amounts={
             "Enhanced data-tether": 1,
             "Omnispex": 0,
-        },
-    ),
-    Datasheet(
-        FACTIONS.ADMECH,
-        "Serberys Raiders",
-        "Serberys-Raiders",
-        nickname="Skitteriskits",
-        weapon_amounts={
-            "Mechanicus pistol": 1,
-            "Galvanic carbine": 3,
-            "Cavalry sabre": 3,
-        },
-        wargear_amounts={
-            "Enhanced data-tether": 1,            
-        }
-    ),
-    Datasheet(
-        FACTIONS.ADMECH,
-        "Sicarian Ruststalkers",
-        "Sicarian-Ruststalkers",
-        nickname="Absolute Mad Lads",
-        weapon_amounts={
-            "Transonic blades": 4,
-            "Transonic blades and chordclaw": 1,
-            "Transonic razor and chordclaw": 0,
         },
     ),
 ]
